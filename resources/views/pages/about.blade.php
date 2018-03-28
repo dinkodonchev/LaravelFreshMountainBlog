@@ -79,7 +79,8 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    About us
+                     <p>About {{ $data['fullname'] }}</p>
+                    <p>Email me at {{ $data['email'] }}</p>
                 </div>
 
                 <div class="links">
