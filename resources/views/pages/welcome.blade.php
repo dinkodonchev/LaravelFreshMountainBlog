@@ -54,6 +54,19 @@
 
     <img src="{{ asset('images/Kalinite.jpg')}}">
 
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron">
+              <h1>Welcome to the blog!</h1>
+                <p class="lead"></p>
+                <p><a class="btn btn-primary btn-lg" href="#" role="button">Popular post</a></p>
+              
+            </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
