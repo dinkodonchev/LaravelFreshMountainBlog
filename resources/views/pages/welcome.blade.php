@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Dinyo's Mountain BLog</title>
+    <title>Dinyo's Mountain Blog</title>
   </head>
   <body>
 
@@ -23,7 +23,13 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
@@ -65,7 +71,46 @@
             </div>
         </div>
       </div>
+    
+
+    <div class="row">
+      <div class="col-md-8" style="background-color: orange">
+        <div class="post">
+          <h3>Post title</h3>
+        <p>Lorem ipsum dolor sit amet, tempor non inceptos, erat architecto accumsan, augue amet interdum esse lacus risus. Commodo eros felis parturient ac, mauris elementum posuere quis sit eros lacinia. Ut in in urna etiam, mauris nec amet, quisque pede et tincidunt, mattis donec dui, montes libero habitasse ac in dictum. Sollicitudin non enim feugiat velit a, lobortis senectus aliquam sed volutpat malesuada. Tortor vivamus cras, curabitur suspendisse, malesuada interdum lacus maecenas, lacinia sit, adipiscing suspendisse torquent in.</p> 
+        <a  href="#" class="btn btn-primary">Read more</a>
+
+        </div>
+
+      <hr>
+
+        <div class="post">
+          <h3>Post title</h3>
+        <p>Lorem ipsum dolor sit amet, tempor non inceptos, erat architecto accumsan, augue amet interdum esse lacus risus. Commodo eros felis parturient ac, mauris elementum posuere quis sit eros lacinia. Ut in in urna etiam, mauris nec amet, quisque pede et tincidunt, mattis donec dui, montes libero habitasse ac in dictum. Sollicitudin non enim feugiat velit a, lobortis senectus aliquam sed volutpat malesuada. Tortor vivamus cras, curabitur suspendisse, malesuada interdum lacus maecenas, lacinia sit, adipiscing suspendisse torquent in.</p> 
+        <a  href="#" class="btn btn-primary">Read more</a>
+
+        </div>
+
+        <hr>
+
+        <div class="post">
+          <h3>Post title</h3>
+        <p>Lorem ipsum dolor sit amet, tempor non inceptos, erat architecto accumsan, augue amet interdum esse lacus risus. Commodo eros felis parturient ac, mauris elementum posuere quis sit eros lacinia. Ut in in urna etiam, mauris nec amet, quisque pede et tincidunt, mattis donec dui, montes libero habitasse ac in dictum. Sollicitudin non enim feugiat velit a, lobortis senectus aliquam sed volutpat malesuada. Tortor vivamus cras, curabitur suspendisse, malesuada interdum lacus maecenas, lacinia sit, adipiscing suspendisse torquent in.</p> 
+        <a  href="#" class="btn btn-primary">Read more</a>
+
+        </div>
+      </div>
+
+
+      <div class="col-md-3 col-md-offset-1" style="background-color: red">
+        <h2>Sidebar</h2>
+        <p>Lorem ipsum dolor sit amet, tempor non inceptos, erat architecto accumsan, augue amet interdum esse lacus risus. Commodo eros felis parturient ac, mauris elementum posuere quis sit eros lacinia. Ut in in urna etiam, mauris nec amet, quisque pede et tincidunt, mattis donec dui, montes libero habitasse ac in dictum. Sollicitudin non enim feugiat velit a, lobortis senectus aliquam sed volutpat malesuada. Tortor vivamus cras, curabitur suspendisse, malesuada interdum lacus maecenas, lacinia sit, adipiscing suspendisse torquent in.</p>
+
+      </div>
     </div>
+
+    </div>
+    <!-- End of container -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
