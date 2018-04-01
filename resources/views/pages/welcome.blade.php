@@ -2,9 +2,7 @@
 
 @section('title', '| Homepage')
 
-@section('stylesheets')
-  <link rel="stylesheet" type="text/css" href="styles.css">
-@endsection
+
 
 @section('content')
       <div class="row">
