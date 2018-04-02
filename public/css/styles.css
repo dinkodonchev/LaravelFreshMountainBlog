@@ -1,1 +1,6 @@
 .btn-h1-spacing {padding: 0;}
+
+.row > form {width: 100%;}
+
+.form-spacing-top {margin-top: 30px;}
+.form-spacing-bottom {margin-bottom: 30px;}
