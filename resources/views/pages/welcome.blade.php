@@ -19,30 +19,18 @@
 
     <div class="row">
       <div class="col-md-8" style="">
-        <div class="post">
-          <h3>Post title</h3>
-        <p>Lorem ipsum dolor sit amet, tempor non inceptos, erat architecto accumsan, augue amet interdum esse lacus risus. Commodo eros felis parturient ac, mauris elementum posuere quis sit eros lacinia. Ut in in urna etiam, mauris nec amet, quisque pede et tincidunt, mattis donec dui, montes libero habitasse ac in dictum. Sollicitudin non enim feugiat velit a, lobortis senectus aliquam sed volutpat malesuada. Tortor vivamus cras, curabitur suspendisse, malesuada interdum lacus maecenas, lacinia sit, adipiscing suspendisse torquent in.</p> 
-        <a  href="#" class="btn btn-primary">Read more</a>
-
-        </div>
-
-      <hr>
+        @foreach($posts as $post)
 
         <div class="post">
-          <h3>Post title</h3>
-        <p>Lorem ipsum dolor sit amet, tempor non inceptos, erat architecto accumsan, augue amet interdum esse lacus risus. Commodo eros felis parturient ac, mauris elementum posuere quis sit eros lacinia. Ut in in urna etiam, mauris nec amet, quisque pede et tincidunt, mattis donec dui, montes libero habitasse ac in dictum. Sollicitudin non enim feugiat velit a, lobortis senectus aliquam sed volutpat malesuada. Tortor vivamus cras, curabitur suspendisse, malesuada interdum lacus maecenas, lacinia sit, adipiscing suspendisse torquent in.</p> 
-        <a  href="#" class="btn btn-primary">Read more</a>
+              <h3>{{$post->title}}</h3>
+            <p>{{substr($post->body, 0, 300)}}{{ strlen($post->body) > 300 ? "..." : "" }}</p> 
+            <a  href="#" class="btn btn-primary">Read more</a>
 
         </div>
-
         <hr>
 
-        <div class="post">
-          <h3>Post title</h3>
-        <p>Lorem ipsum dolor sit amet, tempor non inceptos, erat architecto accumsan, augue amet interdum esse lacus risus. Commodo eros felis parturient ac, mauris elementum posuere quis sit eros lacinia. Ut in in urna etiam, mauris nec amet, quisque pede et tincidunt, mattis donec dui, montes libero habitasse ac in dictum. Sollicitudin non enim feugiat velit a, lobortis senectus aliquam sed volutpat malesuada. Tortor vivamus cras, curabitur suspendisse, malesuada interdum lacus maecenas, lacinia sit, adipiscing suspendisse torquent in.</p> 
-        <a  href="#" class="btn btn-primary">Read more</a>
-
-        </div>
+        @endforeach
+      
       </div>
 
 
