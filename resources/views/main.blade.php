@@ -11,6 +11,9 @@
     <img style="margin-left: 11%; margin-bottom: 30px;" src="{{ asset('images/Kalinite.jpg')}}">
 
     <div class="container">
+
+      @include('partials._messages')
+
       @yield('content')
 
       @include('partials._footer')
