@@ -16,3 +16,9 @@
 	</ul>
 	</div>
 @endif
+
+@if (Auth::check())
+    <div class="alert alert-success">
+        {{ "You are logged in as " }}{{{ isset(Auth::user()->name) ? Auth::user()->name : "" }}}{{"."}}
+    </div>
+@endif

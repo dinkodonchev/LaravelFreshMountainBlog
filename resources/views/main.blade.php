@@ -7,12 +7,12 @@
     
 
     <h1 class="text-center">The Road goes ever on and on...</h1>
-
-    <img style="margin-left: 11%; margin-bottom: 30px;" src="{{ asset('images/Kalinite.jpg')}}">
+    @include('partials._messages')
+    <img style="margin-bottom: 30px; width: 100%" src="{{ asset('images/Kalinite.jpg')}}" >
 
     <div class="container">
 
-      @include('partials._messages')
+      
 
       @yield('content')
 
