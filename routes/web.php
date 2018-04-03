@@ -1,5 +1,16 @@
 <?php
 
+
+
+//Authentication Routes
+
+
+
+Auth::routes();
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +31,6 @@ Route::get('about', 'PagesController@getAbout');
 Route::get('/', 'PagesController@getIndex');
 
 Route::resource('posts', 'PostController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
