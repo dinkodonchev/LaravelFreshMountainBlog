@@ -9,6 +9,12 @@ use App\Post;
 
 class BlogController extends Controller
 {
+	public function getIndex(){
+		$posts = Post::paginate(5);
+
+		return view('blog.index')->withPost($post);
+	}
+
     public function getSingle($slug){
     	// fetch from DB based on slug
     	$post = Post::where('slug', '=', $slug)->first();

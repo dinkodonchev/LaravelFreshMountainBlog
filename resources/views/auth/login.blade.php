@@ -8,6 +8,8 @@
 		<div class="col-md-6 col-md-offset-3">
 			{!! Form::open() !!}
 
+			{{ csrf_field() }}
+			
 			{{ Form::label('email', 'Email:')  }}
 			{{ Form::email('email', null, ['class' => 'form-control'] ) }}
 			<br/>

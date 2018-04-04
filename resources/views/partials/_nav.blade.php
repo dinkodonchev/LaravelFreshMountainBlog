@@ -15,20 +15,29 @@
       <li class="nav-item {{Request::is('contact') ? "active" : ""}}">
         <a class="nav-link" href="/contact">Contact <span class="sr-only">(current)</span></a>
       </li>
-     
+
+      @if(Auth::check())
+
       <li class="nav-item dropdown" style="margin-left: 50px;">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          My Account
+          Hello {{ Auth::user()->name }}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/login">Login</a>
+          <a class="dropdown-item" href="/posts">Posts</a>
+          
           <a class="dropdown-item" href="/register">Register</a>
           <a class="dropdown-item" href="/logout">Logout</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          
         </div>
       </li>
-      
+
+      @else
+
+      <a class="dropdown-item" style="margin-top: 5px; margin-left: 350px;" href="/login">Login</a>
+
+      @endif
+
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
