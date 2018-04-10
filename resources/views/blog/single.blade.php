@@ -10,6 +10,8 @@
 				{{ $post->title}}
 			</h1>
 			<p>{{ $post->body }}</p>
+			<hr>
+			<p>Posted in: {{ $post->category->name }}</p>
 		</div>
 	</div>
 
