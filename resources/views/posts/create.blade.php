@@ -9,12 +9,28 @@
 			<h1>Create New Post:</h1>
 			<hr>
 
-			{!! Form::open(['route' => 'posts.store']) !!}
+			{!! Form::open(['route' => 'posts.store', 'files' => true, 'method' => 'POST']) !!}
+
+				{{ csrf_field() }}
+
     			{{Form::label('title', 'Title:')}}
     			{{Form::text('title', null, array('class'=>'form-control'))}}
 
     			{{Form::label('slug', 'Slug:')}}
     			{{Form::text('slug', null, array('class'=>'form-control'))}}
+
+    			{{Form::label('category', 'Category:')}}
+
+				
+
+    			<select class="form-control" name="category">
+    				@foreach($categories as $category)
+    					<option value='{{ $category->id }}'>{{ $category->name }}</option>
+    				@endforeach
+    			</select>
+
+                {{Form::label('featured_image', 'Upload Image:')}}
+                {{Form::file('featured_image')}}
 
     			{{Form::label('body', 'Post content:')}}
     			{{Form::textarea('body', null, array('class'=>'form-control'))}}

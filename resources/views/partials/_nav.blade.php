@@ -24,7 +24,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="/posts">Posts</a>
-          
+          <a class="dropdown-item" href="/categories">Categories</a>
           <a class="dropdown-item" href="/register">Register</a>
           <a class="dropdown-item" href="/logout">Logout</a>
           <div class="dropdown-divider"></div>
@@ -34,7 +34,7 @@
 
       @else
 
-      <a class="dropdown-item" style="margin-top: 5px; margin-left: 350px;" href="/login">Login</a>
+        <a class="dropdown-item" style="margin-top: 5px; margin-left: 350px;" href="/login">Login</a>
 
       @endif
 
