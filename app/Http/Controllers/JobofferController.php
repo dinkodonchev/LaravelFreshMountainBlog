@@ -57,6 +57,7 @@ class JobofferController extends Controller
 
         $joboffer->name = $request->name;
         $joboffer->experience_requiered = $request->experience_requiered;
+        
 
         $joboffer->save();
 

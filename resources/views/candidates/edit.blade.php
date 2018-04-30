@@ -22,6 +22,15 @@
     				
     			</select>
 
+    		{{Form::label('joboffer', 'Job offers:')}}
+    		
+                <select class="form-control select2-multi" name="joboffer[]" multiple="multiple">
+                    @foreach($joboffers as $joboffer)
+                        <option value='{{ $joboffer->id }}'>{{ $joboffer->name }}</option>
+                    @endforeach  
+                    
+                </select>
+
 			{{ Form::label('experience', 'Experience:', ["class" => 'form-spacing-top'])}}
 			{{ Form::textarea('experience', null, ["class" => 'form-control form-spacing-bottom'])}}
 		</div>

@@ -50,3 +50,10 @@
 
 @endsection
 
+@section('scripts')
+    <script type="text/javascript">
+        $('.select2-multi').select2();
+    </script>
+
+@endsection
+

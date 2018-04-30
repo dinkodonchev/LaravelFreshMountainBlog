@@ -9,7 +9,13 @@
 		<h1>{{ $candidate->name}}</h1>
 		<p class="lead"><strong>Experience: </strong>{{ $candidate->experience }}</p>
 		<p class="lead"><strong>Status: </strong>{{ $candidate->status }}</p>
-		<p class="lead"><strong>Job Applications: </strong>ToDo</p>
+		<p class="lead" ><strong>Job Applications: </strong></br>
+		@foreach($candidate->offer as $offer)
+			<p class="lead">{{ $offer->name }}</p>
+		
+
+		@endforeach
+		
 	</div>
 
 	<div class="col-md-4">

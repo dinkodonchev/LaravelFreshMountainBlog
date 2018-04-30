@@ -24,9 +24,10 @@ class CandidateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $requestindex)
     {
-        $candidates = Candidate::All();
+        $candidates = Candidate::all();
+
         return view('candidates.index')->withCandidates($candidates);
         
 
@@ -39,8 +40,16 @@ class CandidateController extends Controller
      */
     public function create()
     {
-        $candidates = Candidate::All();
-        $joboffers = Joboffer::All();
+        $candidates = Candidate::all();
+        $joboffers = Joboffer::all();
+
+        $boolSelected = false;
+        foreach ($candidates as $candidate) {
+             if($candidate->status == 'selected'){
+            $boolSelected = true;
+            }
+        }
+
         return view('candidates.create')->withCandidates($candidates)->withJoboffers($joboffers);
     }
 
@@ -62,14 +71,28 @@ class CandidateController extends Controller
         $candidate->status = $request->status;
 
         $boolSelected = false;
+
         if($candidate->status == 'selected'){
             $boolSelected = true;
         }
+
         $candidate->experience = $request->experience;
+
+/*
+        $arrInput = $request->input('joboffer');
+        for($i = 0; $i < count($arrInput); $i++){
+            if(is_array($arrInput) && $arrInput[$i] != "")
+                $candidate->job_id = $arrInput[$i];
+        }
+*/
 
         $candidate->save();
 
+        $candidate->offer()->sync($request->joboffer, false);
+
         Session::flash('success', 'The candidate was successfully saved!');
+
+
 
         //redirect to another page or action
         return redirect()->route('candidates.show', $candidate->id);
@@ -93,11 +116,14 @@ class CandidateController extends Controller
      * @param  \App\Candidate  $candidate
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         $candidate = Candidate::find($id);
+        $joboffers = Joboffer::all();
+
+        
         //return the view and pass that info in the var we previously created
-        return view('candidates.edit')->withCandidate($candidate);
+        return view('candidates.edit')->withCandidate($candidate)->withJoboffers($joboffers);
     }
 
     /**
