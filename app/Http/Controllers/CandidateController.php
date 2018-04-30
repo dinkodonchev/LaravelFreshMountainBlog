@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Candidate;
+use App\Joboffer;
 use Illuminate\Http\Request;
 use Session;
 
@@ -39,7 +40,8 @@ class CandidateController extends Controller
     public function create()
     {
         $candidates = Candidate::All();
-        return view('candidates.create')->withCandidates($candidates);
+        $joboffers = Joboffer::All();
+        return view('candidates.create')->withCandidates($candidates)->withJoboffers($joboffers);
     }
 
     /**
@@ -50,6 +52,7 @@ class CandidateController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request);
         //validate the data - ToDo later
         
         //store in the database
@@ -57,6 +60,11 @@ class CandidateController extends Controller
 
         $candidate->name = $request->name;
         $candidate->status = $request->status;
+
+        $boolSelected = false;
+        if($candidate->status == 'selected'){
+            $boolSelected = true;
+        }
         $candidate->experience = $request->experience;
 
         $candidate->save();

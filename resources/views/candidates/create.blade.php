@@ -28,6 +28,14 @@
     				
     			</select>
 
+                {{Form::label('joboffer', 'Job offers:')}}
+                <select class="form-control select2-multi" name="joboffer[]" multiple="multiple">
+                    @foreach($joboffers as $joboffer)
+                        <option value='{{ $joboffer->id }}'>{{ $joboffer->name }}</option>
+                    @endforeach  
+                    
+                </select>
+
 
                 {{Form::label('experience', 'Experience:')}}
                 {{Form::text('experience', null, array('class'=>'form-control'))}}
