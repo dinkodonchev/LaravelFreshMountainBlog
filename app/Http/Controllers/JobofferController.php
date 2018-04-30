@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Joboffer;
+use App\Candidate;
 use Illuminate\Http\Request;
 use Session;
 
@@ -26,6 +27,7 @@ class JobofferController extends Controller
     public function index()
     {
         $joboffers = Joboffer::All();
+        $candidates = Candidate::all();
 
         //return a view and pass in the above variable
         return view('joboffers.index')->withJoboffers($joboffers);
@@ -39,7 +41,8 @@ class JobofferController extends Controller
     public function create()
     {
          $joboffers = Joboffer::All();
-        return view('joboffers.create')->withJoboffers($joboffers);
+         $candidates = Candidate::all();
+        return view('joboffers.create')->withJoboffers($joboffers)->withCandidates($candidates);
     }
 
     /**
@@ -57,9 +60,11 @@ class JobofferController extends Controller
 
         $joboffer->name = $request->name;
         $joboffer->experience_requiered = $request->experience_requiered;
-        
+
 
         $joboffer->save();
+
+        $joboffer->candidate()->sync($request->candidates, false);
 
         Session::flash('success', 'The job offer was successfully saved!');
 

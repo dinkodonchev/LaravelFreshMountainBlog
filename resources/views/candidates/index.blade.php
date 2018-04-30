@@ -36,7 +36,8 @@
 							<td>{{$candidate->status}}</td>
 							<td>
 								@foreach($candidate->offer as $offer)
-									<p class="lead">{{ $offer->name }}</p>
+								</br>
+									<span class="lead">{{ $offer->name }}</span>
 		
 								@endforeach
 							</td>

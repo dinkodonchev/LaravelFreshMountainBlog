@@ -11,7 +11,17 @@
 			{{ Form::label('name', 'Name:')}}
 			{{ Form::text('name', null, ["class" => 'form-control'])}}
 
+			
 			{{Form::label('status', 'Status:')}}	
+
+    			<select class="form-control" name="status">
+    				
+    					<option value='in progress'>{{ 'in progress' }}</option>
+                        <option value='finalist'>{{ 'finalist' }}</option>
+                        <option value='selected'>{{ 'selected' }}</option>
+                        <option value='discarded'>{{ 'discarded' }}</option>
+    				
+    			</select>	
 
     		
 

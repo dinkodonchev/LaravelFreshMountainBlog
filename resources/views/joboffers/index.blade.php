@@ -22,6 +22,7 @@
 					<th>#</th>
 					<th>Name</th>
 					<th>Experience Required</th>
+					<th>Applicants and their status: </th>
 					<th></th>
 				</thead>
 				<tbody>
@@ -31,7 +32,13 @@
 							<th>{{$joboffer->id}}</th>
 							<td>{{$joboffer->name}}</td>
 							<td>{{$joboffer->experience_requiered}}</td>
-							
+							<td>
+								@foreach($joboffer->candidate as $candidate)
+									<p class="lead">{{ $candidate->name }} | {{$candidate->status}}</p>
+		
+								@endforeach
+							</td>
+
 							<td><a href="{{ route('joboffers.show', $joboffer->id) }}" class="btn btn-default">View</a><a href="{{ route('joboffers.edit', $joboffer->id) }}" class="btn btn-default">Edit</a></td>
 						</tr>
 

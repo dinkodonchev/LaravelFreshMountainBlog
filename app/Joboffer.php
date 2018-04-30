@@ -8,7 +8,7 @@ class Joboffer extends Model
 {
     public function candidate(){
 
-    	return $this->belongsToMany('App\Candidate', 'candidate_joboffer', 'candidate_id', 'job_id');
+    	return $this->belongsToMany('App\Candidate');
     	
     }
 }

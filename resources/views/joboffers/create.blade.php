@@ -19,11 +19,19 @@
 
                 {{Form::label('experience_requiered', 'Experience required:')}}
                 {{Form::text('experience_requiered', null, array('class'=>'form-control'))}}
+
+                {{Form::label('candidates', 'Candidates:')}}
+                <select class="form-control select2-multi" name="candidates[]" multiple="multiple">
+                    @foreach($candidates as $candidate)
+                        <option value='{{ $candidate->id }}'>{{ $candidate->name }}</option>
+                    @endforeach  
+                    
+                </select>
                 
                 </br>
     			
 
-    			{{Form::submit('Add Job Offr', array('class'=>'btn btn-success btn-lg btn-block', 'style'=>'margin-top: 20px;'))}}
+    			{{Form::submit('Add Job Offer', array('class'=>'btn btn-success btn-lg btn-block', 'style'=>'margin-top: 20px;'))}}
 			{!! Form::close() !!}
 		</div>
 	</div>
