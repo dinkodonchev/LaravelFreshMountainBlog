@@ -29,9 +29,12 @@
     				@endforeach
     			</select>
 
+                </br>
+
                 {{Form::label('featured_image', 'Upload Image:')}}
                 {{Form::file('featured_image')}}
 
+                </br>
     			{{Form::label('body', 'Post content:')}}
     			{{Form::textarea('body', null, array('class'=>'form-control'))}}
 

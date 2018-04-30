@@ -38,7 +38,13 @@ Route::get('about', 'PagesController@getAbout');
 
 Route::get('/', 'PagesController@getIndex');
 
-Route::resource('posts', 'PostController');
+Route::resources([
+    'posts' => 'PostController',
+    'candidates' => 'CandidateController',
+    'joboffers' => 'JobofferController'
+
+]);
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

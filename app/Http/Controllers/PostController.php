@@ -54,7 +54,6 @@ class PostController extends Controller
         $this->validate($request, array(
                 'title'         => 'required|max:255',
                 'slug'          => 'required|alpha_dash|min:5|max:255',
-                'category_id'   => 'required|integer',
                 'body'          => 'required'
             ));
         //store in the database

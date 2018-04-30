@@ -25,6 +25,8 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="/posts">Posts</a>
           <a class="dropdown-item" href="/categories">Categories</a>
+          <a class="dropdown-item" href="/candidates">Candidates</a>
+          <a class="dropdown-item" href="/joboffers">Job offers</a>
           <a class="dropdown-item" href="/register">Register</a>
           <a class="dropdown-item" href="/logout">Logout</a>
           <div class="dropdown-divider"></div>
