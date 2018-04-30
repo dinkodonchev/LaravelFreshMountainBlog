@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Joboffer;
 use Illuminate\Http\Request;
+use Session;
 
 class JobofferController extends Controller
 {
@@ -37,7 +38,8 @@ class JobofferController extends Controller
      */
     public function create()
     {
-        //
+         $joboffers = Joboffer::All();
+        return view('joboffers.create')->withJoboffers($joboffers);
     }
 
     /**
@@ -48,7 +50,20 @@ class JobofferController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validate the data - ToDo later
+        
+        //store in the database
+        $joboffer = new Joboffer;
+
+        $joboffer->name = $request->name;
+        $joboffer->experience_requiered = $request->experience_requiered;
+
+        $joboffer->save();
+
+        Session::flash('success', 'The job offer was successfully saved!');
+
+        //redirect to another page or action
+        return redirect()->route('joboffers.show', $joboffer->id);
     }
 
     /**
@@ -57,9 +72,10 @@ class JobofferController extends Controller
      * @param  \App\Joboffer  $joboffer
      * @return \Illuminate\Http\Response
      */
-    public function show(Joboffer $joboffer)
+    public function show($id)
     {
-        //
+        $joboffer = Joboffer::find($id);
+        return view('candidates.show')->withJoboffer($joboffer);
     }
 
     /**
@@ -68,9 +84,10 @@ class JobofferController extends Controller
      * @param  \App\Joboffer  $joboffer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Joboffer $joboffer)
+    public function edit($id)
     {
-        //
+        $joboffer = Joboffer::find($id);
+        return view('candidates.edit')->withJoboffer($joboffer);
     }
 
     /**
@@ -80,9 +97,20 @@ class JobofferController extends Controller
      * @param  \App\Joboffer  $joboffer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Joboffer $joboffer)
+    public function update(Request $request, $id)
     {
-        //
+        $joboffer = Joboffer::find($id);
+
+        $joboffer->name = $request->input('name');
+        $joboffer->experience_requiered = $request->input('experience_requiered');
+
+        $joboffer->save();
+
+        //set flash with success message
+        Session::flash('success', 'This job offer was successfully saved!');
+
+        //redirect with flash to show request
+        return redirect()->route('joboffers.show', $joboffer->id);
     }
 
     /**
@@ -91,8 +119,13 @@ class JobofferController extends Controller
      * @param  \App\Joboffer  $joboffer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Joboffer $joboffer)
+    public function destroy($id)
     {
-        //
+        $joboffer = Joboffer::find($id);
+
+        $joboffer->delete();
+
+        Session::flash('success', 'The job offer was successfully deleted.');
+        return redirect()->route('$joboffers.index');
     }
 }

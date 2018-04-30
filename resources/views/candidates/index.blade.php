@@ -22,6 +22,7 @@
 					<th>#</th>
 					<th>Name</th>
 					<th>Experience</th>
+					<th>Status</th>
 					<th></th>
 				</thead>
 				<tbody>
@@ -31,8 +32,9 @@
 							<th>{{$candidate->id}}</th>
 							<td>{{$candidate->name}}</td>
 							<td>{{$candidate->experience}}</td>
+							<td>{{$candidate->status}}</td>
 							
-							<td><a href="{{ route('candidates.show', $post->id) }}" class="btn btn-default">View</a><a href="{{ route('candidates.edit', $post->id) }}" class="btn btn-default">Edit</a></td>
+							<td><a href="{{ route('candidates.show', $candidate->id) }}" class="btn btn-default">View</a><a href="{{ route('candidates.edit', $candidate->id) }}" class="btn btn-default">Edit</a></td>
 						</tr>
 
 					@endforeach

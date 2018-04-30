@@ -7,8 +7,8 @@
 <div class="row">
 	<div class="col-md-8">
 		<h1>{{ $candidate->name}}</h1>
-		<p class="lead">{{ $candidate->experience }}</p>
-		<p class="lead">{{ $candidate->status }}</p>
+		<p class="lead"><strong>Experience: </strong>{{ $candidate->experience }}</p>
+		<p class="lead"><strong>Status: </strong>{{ $candidate->status }}</p>
 	</div>
 
 	<div class="col-md-4">

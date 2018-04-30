@@ -73,10 +73,10 @@ class CandidateController extends Controller
      * @param  \App\Candidate  $candidate
      * @return \Illuminate\Http\Response
      */
-    public function show(Candidate $candidate)
+    public function show($id)
     {
         $candidate = Candidate::find($id);
-        return view('candidates.show')->withCandidates($candidate);
+        return view('candidates.show')->withCandidate($candidate);
     }
 
     /**
@@ -85,11 +85,11 @@ class CandidateController extends Controller
      * @param  \App\Candidate  $candidate
      * @return \Illuminate\Http\Response
      */
-    public function edit(Candidate $candidate)
+    public function edit($id)
     {
         $candidate = Candidate::find($id);
         //return the view and pass that info in the var we previously created
-        return view('candidates.edit')->withCandidates($candidate);
+        return view('candidates.edit')->withCandidate($candidate);
     }
 
     /**
@@ -99,7 +99,7 @@ class CandidateController extends Controller
      * @param  \App\Candidate  $candidate
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Candidate $candidate)
+    public function update(Request $request, $id)
     {
         $candidate = Candidate::find($id);
 
@@ -122,8 +122,13 @@ class CandidateController extends Controller
      * @param  \App\Candidate  $candidate
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Candidate $candidate)
+    public function destroy($id)
     {
-        //
+        $candidate = Candidate::find($id);
+
+        $candidate->delete();
+
+        Session::flash('success', 'The candidate was successfully deleted.');
+        return redirect()->route('candidates.index');
     }
 }
