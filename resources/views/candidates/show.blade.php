@@ -15,6 +15,7 @@
 		
 
 		@endforeach
+		<p class="lead"><strong>Status: </strong>{{ $secondTestVariable }}</p>
 		
 	</div>
 

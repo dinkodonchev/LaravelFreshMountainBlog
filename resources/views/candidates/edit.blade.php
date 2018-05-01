@@ -11,16 +11,7 @@
 			{{ Form::label('name', 'Name:')}}
 			{{ Form::text('name', null, ["class" => 'form-control'])}}
 
-			{{Form::label('status', 'Status:')}}	
-
-    			<select class="form-control" name="status">
-    				
-    					<option value='in progress'>{{ 'in progress' }}</option>
-                        <option value='finalist'>{{ 'finalist' }}</option>
-                        <option value='selected'>{{ 'selected' }}</option>
-                        <option value='discarded'>{{ 'discarded' }}</option>
-    				
-    			</select>
+			
 
     		{{Form::label('joboffer', 'Job offers:')}}
     		
@@ -30,6 +21,23 @@
                     @endforeach  
                     
                 </select>
+
+                {{Form::label('status_per_job', 'Status per Job:')}}
+    		
+                
+                    @foreach($joboffers as $joboffer)
+                        <div>{{ $joboffer->name }}</div>
+	                        <select class="form-control" name="status_per_job">
+	    				
+		    					<option value='in progress'>{{ 'in progress' }}</option>
+		                        <option value='finalist'>{{ 'finalist' }}</option>
+		                        <option value='selected' disabled>{{ 'selected' }}</option>
+		                        <option value='discarded'>{{ 'discarded' }}</option>
+		    				
+	    					</select>
+                    @endforeach  
+                    
+                
 
 			{{ Form::label('experience', 'Experience:', ["class" => 'form-spacing-top'])}}
 			{{ Form::textarea('experience', null, ["class" => 'form-control form-spacing-bottom'])}}

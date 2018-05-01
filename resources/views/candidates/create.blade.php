@@ -23,7 +23,7 @@
     				
     					<option value='in progress'>{{ 'in progress' }}</option>
                         <option value='finalist'>{{ 'finalist' }}</option>
-                        <option value='selected'>{{ 'selected' }}</option>
+                        <option value='selected' disabled>{{ 'selected' }}</option>
                         <option value='discarded'>{{ 'discarded' }}</option>
     				
     			</select>

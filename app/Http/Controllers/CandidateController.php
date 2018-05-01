@@ -8,10 +8,13 @@ use Illuminate\Http\Request;
 use Session;
 
 class CandidateController extends Controller
-{
+{   
+     private $testVariable; 
 
      public function __construct(){
         $this->middleware('auth');
+
+        $this->testVariable = 'Pleaaaase pop out, duuude';
     }
     /**
      * Display a listing of the resource.
@@ -77,6 +80,16 @@ class CandidateController extends Controller
         }
 
         $candidate->experience = $request->experience;
+
+        $statusPerJob = DB::select("SELECT
+                                    candidate_joboffer.status_per_job
+                                    FROM candidate_joboffer
+                                    INNER JOIN candidates
+                                    ON candidates.id = candidate_joboffer.candidate_id
+                                    WHERE candidates.id = ?", [$candidate->id]
+                                );
+
+        $secondTestVariable = $this->testVariable;
 
 /*
         $arrInput = $request->input('joboffer');

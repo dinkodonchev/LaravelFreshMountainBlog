@@ -37,7 +37,7 @@
 							<td>
 								@foreach($candidate->offer as $offer)
 								</br>
-									<span class="lead">{{ $offer->name }}</span>
+									<span class="lead">{{ $offer->name }}</span><span class="lead"> {{ $offer->distinct($offer->id)->count() }}</span>
 		
 								@endforeach
 							</td>
