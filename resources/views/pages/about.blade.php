@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', '| About wait waaat')
+@section('title', '| About ')
 
 @section('content')
 
