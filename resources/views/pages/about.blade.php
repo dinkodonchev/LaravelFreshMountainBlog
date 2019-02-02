@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', '| About Changed')
+@section('title', '| About something in the month of mai')
 
 @section('content')
 
