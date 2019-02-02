@@ -30,8 +30,8 @@
 	                        <select class="form-control" name="status_per_job">
 	    				
 		    					<option value='in progress'>{{ 'in progress' }}</option>
-		                        <option value='finalist'>{{ 'finalist' }}</option>
-		                        <option value='selected' disabled>{{ 'selected' }}</option>
+		                        <option value='finalist' {!! (!$finalistallowed) ? 'disabed' : '' !!}>{{ 'finalist' }}</option>
+		                        <option value='selected' {!! ($selected) ? 'disabed' : '' !!}>{{ 'selected' }}</option>
 		                        <option value='discarded'>{{ 'discarded' }}</option>
 		    				
 	    					</select>

@@ -30,6 +30,10 @@ class PagesController extends Controller{
 		return view('pages/about')->withData($data);
 	}
 
+	public function getSandbox(){
+		return view('pages/sandbox');
+	}
+
 	public function getContact(){
 		return view('pages/contact');
 	}

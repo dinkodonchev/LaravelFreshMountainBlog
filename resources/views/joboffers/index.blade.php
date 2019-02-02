@@ -30,7 +30,10 @@
 
 						<tr>
 							<th>{{$joboffer->id}}</th>
-							<td>{{$joboffer->name}}</td>
+							<td>{{$joboffer->name}} has 
+								@foreach($joboffer->candidate as $candidate)
+								<!--<span class="lead"> {{ $candidate->distinct($candidate->candidate_id)->count() }}</span> candidates</td>-->
+								@endforeach
 							<td>{{$joboffer->experience_requiered}}</td>
 							<td>
 								@foreach($joboffer->candidate as $candidate)

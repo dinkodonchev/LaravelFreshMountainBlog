@@ -6,14 +6,25 @@ use App\Candidate;
 use App\Joboffer;
 use Illuminate\Http\Request;
 use Session;
+use DB;
 
 class CandidateController extends Controller
 {   
      private $testVariable; 
+     private $statusPerJob = "";
 
      public function __construct(){
         $this->middleware('auth');
-
+        /*
+        $this->$statusPerJob = DB::select("SELECT
+                                    candidate_joboffer.status_per_job
+                                    FROM candidate_joboffer
+                                    INNER JOIN candidates
+                                    ON candidates.id = candidate_joboffer.candidate_id
+                                    WHERE candidates.id = 22"
+                                    // ? , [$candidate->id]
+                                );
+                                */
         $this->testVariable = 'Pleaaaase pop out, duuude';
     }
     /**
@@ -31,7 +42,17 @@ class CandidateController extends Controller
     {
         $candidates = Candidate::all();
 
-        return view('candidates.index')->withCandidates($candidates);
+        $statusPerJob = DB::select("SELECT
+                                    candidate_joboffer.status_per_job
+                                    FROM candidate_joboffer
+                                    INNER JOIN candidates
+                                    ON candidates.id = candidate_joboffer.candidate_id
+                                    WHERE candidates.id = 22"
+                                    // ? , [$candidate->id]
+                                ); 
+                   
+
+        return view('candidates.index')->withCandidates($candidates)->with('statusperjob', $statusPerJob);
         
 
     }
@@ -53,7 +74,9 @@ class CandidateController extends Controller
             }
         }
 
-        return view('candidates.create')->withCandidates($candidates)->withJoboffers($joboffers);
+
+
+        return view('candidates.create')->withCandidates($candidates)->withJoboffers($joboffers)->with('selected', $boolSelected);
     }
 
     /**
@@ -86,10 +109,17 @@ class CandidateController extends Controller
                                     FROM candidate_joboffer
                                     INNER JOIN candidates
                                     ON candidates.id = candidate_joboffer.candidate_id
-                                    WHERE candidates.id = ?", [$candidate->id]
+                                    WHERE candidates.id = 22"
+                                    // ? , [$candidate->id]
                                 );
 
         $secondTestVariable = $this->testVariable;
+
+        foreach($candidate->offer as $offer){
+            $offer->status_per_job = $request->status_per_job;
+        }
+
+        
 
 /*
         $arrInput = $request->input('joboffer');
@@ -108,7 +138,7 @@ class CandidateController extends Controller
 
 
         //redirect to another page or action
-        return redirect()->route('candidates.show', $candidate->id);
+        return redirect()->route('candidates.show', $candidate->id)->with('statusperjob', $statusPerJob);
     }
 
     /**
@@ -117,9 +147,16 @@ class CandidateController extends Controller
      * @param  \App\Candidate  $candidate
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
         $candidate = Candidate::find($id);
+
+        foreach($candidate->offer as $offer){
+            $offer->status_per_job = $request->status_per_job;
+        }
+
+        $candidate->offer()->sync($request->joboffer, false);
+
         return view('candidates.show')->withCandidate($candidate);
     }
 
@@ -134,9 +171,38 @@ class CandidateController extends Controller
         $candidate = Candidate::find($id);
         $joboffers = Joboffer::all();
 
+        $boolSelected = false;
         
+        if($candidate->status == 'selected'){
+            $boolSelected = true;
+        }
+
+        $arrCountOfInProgress = DB::select("SELECT
+                                    COUNT(candidate_joboffer.status_per_job) as cnt
+                                    FROM candidate_joboffer
+                                    WHERE candidate_joboffer.status_per_job = 'in progress';
+                                    " 
+                                ); 
+
+        $boolFinalistSelectable = false;
+        $countOfInProgress = count($arrCountOfInProgress);
+        
+        if($countOfInProgress == 0){
+            $boolFinalistSelectable = true;
+        }
+        
+
+        foreach($candidate->offer as $offer){
+            $offer->status_per_job = $request->status_per_job;
+        }
+
+        $candidate->offer()->sync($request->joboffer, false);
         //return the view and pass that info in the var we previously created
-        return view('candidates.edit')->withCandidate($candidate)->withJoboffers($joboffers);
+        return view('candidates.edit')
+            ->withCandidate($candidate)
+            ->withJoboffers($joboffers)
+            ->with('selected', $boolSelected)
+            ->with('finalistallowed', $boolFinalistSelectable);
     }
 
     /**
@@ -149,6 +215,7 @@ class CandidateController extends Controller
     public function update(Request $request, $id)
     {
         $candidate = Candidate::find($id);
+        $candidates = Candidate::all();
 
         $candidate->name = $request->input('name');
         $candidate->status = $request->input('status');

@@ -9,7 +9,7 @@
 			<h1>Add a Candidate:</h1>
 			<hr>
 
-			{!! Form::open(['route' => 'candidates.store', 'files' => true, 'method' => 'POST']) !!}
+			{!! Form::open(['route' => 'candidates.store', 'method' => 'POST']) !!}
 
 				{{ csrf_field() }}
 
@@ -23,7 +23,7 @@
     				
     					<option value='in progress'>{{ 'in progress' }}</option>
                         <option value='finalist'>{{ 'finalist' }}</option>
-                        <option value='selected' disabled>{{ 'selected' }}</option>
+                        <option value='selected' {!! ($selected) ? 'disabled' : '' !!}>{{ 'selected' }}</option>
                         <option value='discarded'>{{ 'discarded' }}</option>
     				
     			</select>
@@ -36,6 +36,7 @@
                     
                 </select>
 
+                
 
                 {{Form::label('experience', 'Experience:')}}
                 {{Form::text('experience', null, array('class'=>'form-control'))}}

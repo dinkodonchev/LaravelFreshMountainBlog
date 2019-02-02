@@ -6,7 +6,7 @@
 
 	<div class="row">
 		<div class="col-md-10">
-			<h1>All Candidate</h1>
+			<h1>All Candidates</h1>
 		</div>
 
 		<div class="col-md-2 btn-h1-spacing">
@@ -23,7 +23,8 @@
 					<th>Name</th>
 					<th>Experience</th>
 					<th>Status</th>
-					<th>Job Offer ID</th>
+					<th>Status per Job</th>
+					
 					<th></th>
 				</thead>
 				<tbody>
@@ -34,12 +35,13 @@
 							<td>{{$candidate->name}}</td>
 							<td>{{$candidate->experience}}</td>
 							<td>{{$candidate->status}}</td>
+
+							@php
+    							//print_r($statusperjob);
+							@endphp
+							
 							<td>
-								@foreach($candidate->offer as $offer)
-								</br>
-									<span class="lead">{{ $offer->name }}</span><span class="lead"> {{ $offer->distinct($offer->id)->count() }}</span>
-		
-								@endforeach
+								{{'ToDo' }}
 							</td>
 							
 							<td><a href="{{ route('candidates.show', $candidate->id) }}" class="btn btn-default">View</a><a href="{{ route('candidates.edit', $candidate->id) }}" class="btn btn-default">Edit</a></td>

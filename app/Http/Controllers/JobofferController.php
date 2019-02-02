@@ -30,7 +30,7 @@ class JobofferController extends Controller
         $candidates = Candidate::all();
 
         //return a view and pass in the above variable
-        return view('joboffers.index')->withJoboffers($joboffers);
+        return view('joboffers.index')->withJoboffers($joboffers)->withCandidates($candidates);
     }
 
     /**
@@ -80,8 +80,9 @@ class JobofferController extends Controller
      */
     public function show($id)
     {
+        
         $joboffer = Joboffer::find($id);
-        return view('candidates.show')->withJoboffer($joboffer);
+        return view('joboffers.show')->withJoboffer($joboffer);
     }
 
     /**
@@ -93,7 +94,20 @@ class JobofferController extends Controller
     public function edit($id)
     {
         $joboffer = Joboffer::find($id);
-        return view('candidates.edit')->withJoboffer($joboffer);
+        $candidates = Candidate::all();
+
+        $boolSelected = false;
+        $boolDiscarded = false;
+
+        foreach ($candidates as $candidate) {
+             
+            if($candidate->status == 'selected'){
+                $boolSelected = true;
+                // All other Candidates should become $boolDiscarded = true !!!
+            }
+        }
+
+        return view('joboffers.edit')->withJoboffer($joboffer)->with('selected', $boolSelected)->with('discarded', $boolDiscarded);
     }
 
     /**

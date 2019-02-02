@@ -10,12 +10,15 @@
 		<p class="lead"><strong>Experience: </strong>{{ $candidate->experience }}</p>
 		<p class="lead"><strong>Status: </strong>{{ $candidate->status }}</p>
 		<p class="lead" ><strong>Job Applications: </strong></br>
-		@foreach($candidate->offer as $offer)
-			<p class="lead">{{ $offer->name }}</p>
-		
+			@foreach($candidate->offer as $offer)
+				<p class="lead">{{ $offer->name }}</p>
+			
 
-		@endforeach
-		<p class="lead"><strong>Status: </strong>{{ $secondTestVariable }}</p>
+			@endforeach
+		<p  class="lead"><strong>Status: </strong>
+
+		</p>
+
 		
 	</div>
 
