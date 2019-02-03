@@ -1,6 +1,7 @@
 @extends('main')
 
-@section('title', '| About - kvo staaaanaaaaa uaaaau')
+@section('title', '| About')
+
 
 @section('content')
 
