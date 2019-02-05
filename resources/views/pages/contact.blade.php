@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', '| Contact')
+@section('title', '| Contact changed')
 
 @section('content')
       <div class="row">
